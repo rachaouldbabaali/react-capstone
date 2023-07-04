@@ -1,0 +1,167 @@
+[
+    {
+      "id": 1,
+      "name": "Tokyo",
+      "countryCode": "JP"
+    },
+    {
+      "id": 2,
+      "name": "New York",
+      "countryCode": "US"
+    },
+    {
+      "id": 3,
+      "name": "Los Angeles",
+      "countryCode": "US"
+    },
+    {
+      "id": 4,
+      "name": "London",
+      "countryCode": "GB"
+    },
+    {
+      "id": 5,
+      "name": "Paris",
+      "countryCode": "FR"
+    },
+    {
+      "id": 6,
+      "name": "Berlin",
+      "countryCode": "DE"
+    },
+    {
+      "id": 7,
+      "name": "Moscow",
+      "countryCode": "RU"
+    },
+    {
+      "id": 8,
+      "name": "Beijing",
+      "countryCode": "CN"
+    },
+    {
+      "id": 9,
+      "name": "Sydney",
+      "countryCode": "AU"
+    },
+    {
+      "id": 10,
+      "name": "Rio de Janeiro",
+      "countryCode": "BR"
+    },
+    {
+      "id": 11,
+      "name": "Cape Town",
+      "countryCode": "ZA"
+    },
+    {
+      "id": 12,
+      "name": "Dubai",
+      "countryCode": "AE"
+    },
+    {
+      "id": 13,
+      "name": "Toronto",
+      "countryCode": "CA"
+    },
+    {
+      "id": 14,
+      "name": "Vancouver",
+      "countryCode": "CA"
+    },
+    {
+      "id": 15,
+      "name": "Mexico City",
+      "countryCode": "MX"
+    },
+    {
+      "id": 16,
+      "name": "São Paulo",
+      "countryCode": "BR"
+    },
+    {
+      "id": 17,
+      "name": "Buenos Aires",
+      "countryCode": "AR"
+    },
+    {
+      "id": 18,
+      "name": "Santiago",
+      "countryCode": "CL"
+    },
+    {
+      "id": 19,
+      "name": "Lima",
+      "countryCode": "PE"
+    },
+    {
+      "id": 20,
+      "name": "Bogotá",
+      "countryCode": "CO"
+    },
+    {
+      "id": 21,
+      "name": "Madrid",
+      "countryCode": "ES"
+    },
+    {
+      "id": 22,
+      "name": "Barcelona",
+      "countryCode": "ES"
+    },
+    {
+      "id": 23,
+      "name": "Rome",
+      "countryCode": "IT"
+    },
+    {
+      "id": 24,
+      "name": "Milan",
+      "countryCode": "IT"
+    },
+    {
+      "id": 25,
+      "name": "Athens",
+      "countryCode": "GR"
+    },
+    {
+      "id": 26,
+      "name": "Istanbul",
+      "countryCode": "TR"
+    },
+    {
+      "id": 27,
+      "name": "Cairo",
+      "countryCode": "EG"
+    },
+    {
+      "id": 28,
+      "name": "Mumbai",
+      "countryCode": "IN"
+    },
+    {
+      "id": 29,
+      "name": "Delhi",
+      "countryCode": "IN"
+    },
+    {
+      "id": 30,
+      "name": "Bangkok",
+      "countryCode": "TH"
+    },
+    {
+      "id": 31,
+      "name": "Seoul",
+      "countryCode": "KR"
+    },
+    {
+      "id": 33,
+      "name": "Melbourne",
+      "countryCode": "AU"
+    },
+    {
+      "id": 34,
+      "name": "Auckland",
+      "countryCode": "NZ"
+    }
+  ]

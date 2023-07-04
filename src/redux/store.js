@@ -1,12 +1,14 @@
-import { configureStore } from '@reduxjs/toolkit';
-// import rocketsSlice from './rockets/rocketsSlice';
-// import missionReducer from './Missions/missionsSlice';
+import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
+import thunkMiddleware from 'redux-thunk';
+import weatherReducer from './weatherSlice';
+
+const middleware = [...getDefaultMiddleware(), thunkMiddleware];
 
 const store = configureStore({
   reducer: {
-    //     rocket: rocketsSlice,
-    //     missions: missionReducer,
+    weather: weatherReducer,
   },
+  middleware,
 });
 
 export default store;

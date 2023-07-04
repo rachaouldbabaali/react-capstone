@@ -1,47 +1,44 @@
-import React, { useState } from 'react';
-import {
-  Container, Row, Col, Form,
-} from 'react-bootstrap';
-import WorldMap from '../images/worldmap.png';
-import '../styles/Heading.css';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWeather } from '../redux/weatherSlice';
+import cities from '../data/cities.json';
 
-function Heading() {
-  const [continent, setContinent] = useState('');
+const Heading = () => {
+  const [selectedCity, setSelectedCity] = useState(cities[0]);
+  const dispatch = useDispatch();
+  const { isLoading } = useSelector((state) => state.weather);
 
-  const handleSelect = (event) => {
-    setContinent(event.target.value);
+  useEffect(() => {
+    dispatch(fetchWeather(selectedCity));
+  }, [dispatch, selectedCity]);
+
+  const handleChange = (e) => {
+    const [name, countryCode] = e.target.value.split(',');
+    setSelectedCity({ name, countryCode });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(fetchWeather(selectedCity));
   };
 
   return (
-    <div className="heading" style={{ backgroundImage: `url(${WorldMap})` }}>
-      <Container>
-        <Row>
-          <Col className="text-center">
-            <h1 className="display-4">Explore the world</h1>
-            <p className="lead">Discover new places with us</p>
-          </Col>
-        </Row>
-        <Row>
-          <Col className="text-center">
-            <Form>
-              <Form.Group controlId="formContinentSelect">
-                <Form.Control as="select" value={continent} onChange={handleSelect}>
-                  <option value="">Select a continent</option>
-                  <option value="Africa">Africa</option>
-                  <option value="Antarctica">Antarctica</option>
-                  <option value="Asia">Asia</option>
-                  <option value="Australia">Australia</option>
-                  <option value="Europe">Europe</option>
-                  <option value="North America">North America</option>
-                  <option value="South America">South America</option>
-                </Form.Control>
-              </Form.Group>
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+    <div className="heading">
+      <h1>Weather App</h1>
+      <form onSubmit={handleSubmit}>
+        <select value={`${selectedCity.name},${selectedCity.countryCode}`} onChange={handleChange}>
+          {cities.map((city) => (
+            <option key={`${city.name},${city.countryCode}`} value={`${city.name},${city.countryCode}`}>
+              {city.name}
+            </option>
+          ))}
+        </select>
+        <button type="submit" disabled={isLoading}>
+          {isLoading ? 'Loading...' : 'Get Weather'}
+        </button>
+      </form>
     </div>
   );
-}
+};
 
 export default Heading;
