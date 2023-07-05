@@ -6,7 +6,9 @@ import cities from '../data/cities.json';
 const Heading = () => {
   const [selectedCity, setSelectedCity] = useState(cities[0]);
   const dispatch = useDispatch();
-  const { isLoading } = useSelector((state) => state.weather);
+  const {
+    temperature, wind, icon, isLoading, error,
+  } = useSelector((state) => state.weather);
 
   useEffect(() => {
     dispatch(fetchWeather(selectedCity));
@@ -15,6 +17,7 @@ const Heading = () => {
   const handleChange = (e) => {
     const [name, countryCode] = e.target.value.split(',');
     setSelectedCity({ name, countryCode });
+    console.log(temperature);
   };
 
   const handleSubmit = (e) => {
@@ -37,6 +40,28 @@ const Heading = () => {
           {isLoading ? 'Loading...' : 'Get Weather'}
         </button>
       </form>
+      {error && <p>{error}</p>}
+      {temperature && wind && (
+        <div className="cityweather">
+          <p>
+            city name:
+            {selectedCity.name}
+          </p>
+          <p>
+            country code:
+            {selectedCity.countryCode}
+          </p>
+          <p>
+            temperature:
+            {temperature}
+          </p>
+          <p>
+            wind:
+            {wind}
+          </p>
+          <img src={`http://openweathermap.org/img/w/${icon}.png`} alt="weather icon" />
+        </div>
+      )}
     </div>
   );
 };
