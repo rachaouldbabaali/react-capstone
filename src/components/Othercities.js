@@ -1,59 +1,99 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchWeather } from '../redux/weatherSlice';
+import {
+  Button, Card, Col, Container, Row,
+} from 'react-bootstrap';
+import { fetchWeather, setCity } from '../redux/weatherSlice';
 
-const OtherCities = () => {
+const cities = [
+  { name: 'New York', countryCode: 'us' },
+  { name: 'London', countryCode: 'gb' },
+  { name: 'Paris', countryCode: 'fr' },
+  { name: 'Tokyo', countryCode: 'jp' },
+  { name: 'Sydney', countryCode: 'au' },
+  { name: 'Dubai', countryCode: 'ae' },
+  { name: 'Mumbai', countryCode: 'in' },
+  { name: 'Rio de Janeiro', countryCode: 'br' },
+];
+
+const Weather = () => {
   const dispatch = useDispatch();
-  const othercities = useSelector((state) => state.weather.othercities);
+  const [selectedCity, setSelectedCity] = useState(() => {
+    const storedCity = localStorage.getItem('selectedCity');
+    return storedCity ? JSON.parse(storedCity) : null;
+  });
+  const weather = useSelector((state) => state.weather.weather);
+  const status = useSelector((state) => state.weather.status);
 
-  useEffect(() => {
-    othercities.forEach((city) => {
-      dispatch(fetchWeather(city));
-    });
-  }, [dispatch, othercities]);
+  const handleCityClick = (city) => {
+    setSelectedCity(city);
+    dispatch(setCity(city));
+    dispatch(fetchWeather(city));
+    localStorage.setItem('selectedCity', JSON.stringify(city));
+  };
 
   return (
     <div>
-      <h2>Other Cities</h2>
-      <ul>
-        {othercities.map((city) => (
-          <li key={city.id}>
-            <p>{city.name}</p>
-            <p>
-              Temperature:
-              {' '}
-              {city.weather ? city.weather.temp : 'loading...'}
-            </p>
-            <p>
-              Pressure:
-              {' '}
-              {city.weather ? city.weather.pressure : 'loading...'}
-            </p>
-            <p>
-              Humidity:
-              {' '}
-              {city.weather ? city.weather.humidity : 'loading...'}
-            </p>
-            <p>
-              Wind:
-              {' '}
-              {city.weather ? city.weather.wind : 'loading...'}
-            </p>
-            <p>
-              {city.weather ? (
-                <img
-                  src={`https://openweathermap.org/img/w/${city.weather.icon}.png`}
-                  alt={city.weather.description}
-                />
-              ) : (
-                'loading...'
+      <Container>
+        <Row>
+          {cities.map((city, index) => (
+            // eslint-disable-next-line react/no-array-index-key
+            <Col md={3} key={index}>
+              <Card>
+                <Card.Body>
+                  <Card.Title>{city.name}</Card.Title>
+                  <Button
+                    variant="primary"
+                    onClick={() => handleCityClick(city)}
+                  >
+                    Details here
+                  </Button>
+                </Card.Body>
+              </Card>
+            </Col>
+          ))}
+        </Row>
+        {selectedCity && (
+          <Row>
+            <Col md={12}>
+              <h2>
+                {selectedCity.name}
+                ,
+                {' '}
+                {selectedCity.countryCode}
+              </h2>
+              {status === 'loading' && <div>Loading...</div>}
+              {status === 'failed' && <div>Failed to fetch weather data.</div>}
+              {status === 'succeeded' && (
+                <div>
+                  <p>
+                    Temperature:
+                    {' '}
+                    {weather.main.temp}
+                  </p>
+                  <p>
+                    Pressure:
+                    {' '}
+                    {weather.main.pressure}
+                  </p>
+                  <p>
+                    Humidity:
+                    {' '}
+                    {weather.main.humidity}
+                  </p>
+                  <p>
+                    Wind Speed:
+                    {' '}
+                    {weather.wind.speed}
+                  </p>
+                </div>
               )}
-            </p>
-          </li>
-        ))}
-      </ul>
+            </Col>
+          </Row>
+        )}
+      </Container>
     </div>
   );
 };
 
-export default OtherCities;
+export default Weather;

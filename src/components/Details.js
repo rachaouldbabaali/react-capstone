@@ -58,10 +58,16 @@ const Details = () => {
 };
 
 Details.propTypes = {
-  selectedCity: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    countryCode: PropTypes.string.isRequired,
-  }).isRequired,
+  // eslint-disable-next-line react/require-default-props
+  details: PropTypes.shape({
+    weather: PropTypes.shape({
+      name: PropTypes.string,
+      main: PropTypes.shape({
+        temp: PropTypes.number,
+        humidity: PropTypes.number,
+      }),
+    }),
+  }),
 };
 
 export default Details;

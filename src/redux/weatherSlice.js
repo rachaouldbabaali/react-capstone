@@ -8,7 +8,6 @@ const initialState = {
     main: { temp: null, pressure: null, humidity: null },
     wind: { speed: '' },
   },
-  othercities: [],
 };
 export const fetchWeather = createAsyncThunk(
   'weather/fetchWeather',
@@ -20,49 +19,9 @@ export const fetchWeather = createAsyncThunk(
   },
 );
 
-const othercities = [];
-// eslint-disable-next-line no-unused-vars
-const fetchcity1 = createAsyncThunk('https://api.openweathermap.org/data/2.5/weather?q=London,GB&appid=86cc7b280074d7bb76827e5234868aa1');
-const city1 = {
-  name: 'London',
-  id: 4,
-};
-othercities.push(city1);
-
-const fetchcity2 = createAsyncThunk('https://api.openweathermap.org/data/2.5/weather?q=Paris,FR&appid=86cc7b280074d7bb76827e5234868aa1');
-const city2 = {
-  name: 'Paris',
-  id: 5,
-  weather: {
-    temp: fetchcity2.main.temp,
-    pressure: fetchcity2.main.pressure,
-    humidity: fetchcity2.main.humidity,
-    wind: fetchcity2.wind.speed,
-    icon: fetchcity2.weather[0].icon,
-    description: fetchcity2.weather[0].description,
-  },
-};
-othercities.push(city2);
-
-const fetchcity3 = createAsyncThunk('https://api.openweathermap.org/data/2.5/weather?q=Berlin,DE&appid=86cc7b280074d7bb76827e5234868aa1');
-const city3 = {
-  name: 'Berlin',
-  id: 6,
-  weather: {
-    temp: fetchcity3.main.temp,
-    pressure: fetchcity3.main.pressure,
-    humidity: fetchcity3.main.humidity,
-    wind: fetchcity3.wind.speed,
-    icon: fetchcity3.weather[0].icon,
-    description: fetchcity3.weather[0].description,
-  },
-};
-othercities.push(city3);
-
 const weatherSlice = createSlice({
   name: 'weather',
   initialState,
-  othercities,
   reducers: {
     setCity(state, action) {
       const { name, countryCode } = action.payload;
@@ -74,6 +33,9 @@ const weatherSlice = createSlice({
       state.weather.city = action.payload;
     },
     getWeather(state, action) {
+      state.weather = action.payload;
+    },
+    getOthercities(state, action) {
       state.weather = action.payload;
     },
   },

@@ -5,7 +5,10 @@ import City from './City';
 import cities from '../data/cities.json';
 
 const Heading = () => {
-  const [selectedCity, setSelectedCity] = useState(cities[0]);
+  const [selectedCity, setSelectedCity] = useState(() => {
+    const storedCity = localStorage.getItem('selectedCity');
+    return storedCity ? JSON.parse(storedCity) : cities[0];
+  });
   const dispatch = useDispatch();
   const {
     temperature, isLoading, error,
@@ -13,6 +16,7 @@ const Heading = () => {
 
   useEffect(() => {
     dispatch(fetchWeather(selectedCity));
+    localStorage.setItem('selectedCity', JSON.stringify(selectedCity));
   }, [dispatch, selectedCity]);
 
   const handleChange = (e) => {
