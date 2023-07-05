@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { fetchWeather } from '../redux/weatherSlice';
 import City from './City';
 import cities from '../data/cities.json';
+import Navbar from './Navbar';
 
 const Heading = () => {
   const [selectedCity, setSelectedCity] = useState(() => {
@@ -30,25 +31,28 @@ const Heading = () => {
   };
 
   return (
-    <div className="heading">
-      <h1>Weather App</h1>
-      <form onSubmit={handleSubmit}>
-        <select value={`${selectedCity.name},${selectedCity.countryCode}`} onChange={handleChange}>
-          {cities.map((city) => (
-            <option key={`${city.name},${city.countryCode}`} value={`${city.name},${city.countryCode}`}>
-              {city.name}
-            </option>
-          ))}
-        </select>
-        <button type="submit" disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Get Weather'}
-        </button>
-      </form>
-      {error && <p>{error}</p>}
-      {temperature && (
+    <>
+      <Navbar />
+      <div className="heading">
+        <h1>Weather App</h1>
+        <form onSubmit={handleSubmit}>
+          <select value={`${selectedCity.name},${selectedCity.countryCode}`} onChange={handleChange}>
+            {cities.map((city) => (
+              <option key={`${city.name},${city.countryCode}`} value={`${city.name},${city.countryCode}`}>
+                {city.name}
+              </option>
+            ))}
+          </select>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? 'Loading...' : 'Get Weather'}
+          </button>
+        </form>
+        {error && <p>{error}</p>}
+        {temperature && (
         <City />
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 };
 

@@ -3,7 +3,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Details from './Details';
 import store from '../redux/store';
 
 const WeatherDetails = () => {
@@ -29,14 +28,6 @@ const WeatherDetails = () => {
         humidity:
         {details.weather.weather.main.humidity}
       </p>
-      <div>
-        <Details
-          selectedCity={details.weather.weather.name}
-          temperature={details.weather.weather.main.temp}
-          wind={details.weather.weather.wind.speed}
-          humidity={details.weather.weather.main.humidity}
-        />
-      </div>
       <div>
         <Link to="/Details">
           <button type="button">

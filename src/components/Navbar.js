@@ -1,46 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faMicrophone, faCog, faArrowLeft, faHome,
+  faMicrophone, faCog, faArrowLeft,
 } from '@fortawesome/free-solid-svg-icons';
 import '../styles/Navbar.css';
 
 function CustomNavbar() {
-  const [isMainPage, setIsMainPage] = useState(window.location.pathname === '/');
-
-  useEffect(() => {
-    const handleLocationChange = () => {
-      setTimeout(() => {
-        setIsMainPage(window.location.pathname === '/');
-      }, 10);
-    };
-    window.addEventListener('popstate', handleLocationChange);
-    return () => {
-      window.removeEventListener('popstate', handleLocationChange);
-    };
-  }, []);
+  const isMainPage = window.location.pathname === '/';
 
   const handleBackButtonClick = () => {
     window.history.back();
   };
 
-  const handleTitleClick = () => {
-    const timestamp = new Date().getTime();
-    window.location.href = `/?timestamp=${timestamp}`;
-  };
-
   return (
     <Navbar bg="light" expand="lg" fixed="top" className="naav">
-      <Navbar.Brand>
-        {isMainPage ? (
-          <FontAwesomeIcon icon={faHome} />
-        ) : (
-          <FontAwesomeIcon icon={faArrowLeft} onClick={handleBackButtonClick} />
-        )}
-      </Navbar.Brand>
+      {!isMainPage && (
+        <Navbar.Brand>
+          <FontAwesomeIcon
+            icon={faArrowLeft}
+            className="arrowleft"
+            onClick={handleBackButtonClick}
+          />
+        </Navbar.Brand>
+      )}
       <Nav className="ml-auto">
-        <Nav.Link id="title" onClick={handleTitleClick}>Weather Metrics</Nav.Link>
+        <Nav.Link id="title">Weather Metrics</Nav.Link>
       </Nav>
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav>
