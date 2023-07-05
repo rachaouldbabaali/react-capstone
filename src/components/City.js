@@ -16,6 +16,9 @@ const WeatherDetails = () => {
         city name:
         {details.weather.weather.name}
       </p>
+      <div className="icon">
+        <img src={`http://openweathermap.org/img/w/${details.weather.weather.weather[0].icon}.png`} alt="weather icon" />
+      </div>
       <p>
         temperature:
         {details.weather.weather.main.temp}

@@ -30,6 +30,7 @@ const Weather = () => {
     dispatch(setCity(city));
     dispatch(fetchWeather(city));
     localStorage.setItem('selectedCity', JSON.stringify(city));
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -39,9 +40,10 @@ const Weather = () => {
           {cities.map((city, index) => (
             // eslint-disable-next-line react/no-array-index-key
             <Col md={3} key={index}>
-              <Card>
+              <Card onClick={() => handleCityClick(city)}>
                 <Card.Body>
                   <Card.Title>{city.name}</Card.Title>
+                  <Card.Text>{}</Card.Text>
                   <Button
                     variant="primary"
                     onClick={() => handleCityClick(city)}
@@ -56,18 +58,12 @@ const Weather = () => {
         {selectedCity && (
           <Row>
             <Col md={12}>
-              <h2>
-                {selectedCity.name}
-                ,
-                {' '}
-                {selectedCity.countryCode}
-              </h2>
               {status === 'loading' && <div>Loading...</div>}
               {status === 'failed' && <div>Failed to fetch weather data.</div>}
               {status === 'succeeded' && (
                 <div>
                   <p>
-                    Temperature:
+                    Temperature is currently:
                     {' '}
                     {weather.main.temp}
                   </p>
