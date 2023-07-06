@@ -1,57 +1,106 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import React from 'react';
 import PropTypes from 'prop-types';
 import store from '../redux/store';
 import Navbar from './Navbar';
+import '../styles/Details.css';
 
 const Details = () => {
   const details = store.getState();
+  window.scrollTo(0, 0);
   return (
     <>
       <Navbar />
       <div>
-        <div>
-          <p>
+        <div className="details">
+          <h1>
             Weather Details for
+            <br />
             {details.weather.weather.name}
-          </p>
+          </h1>
           <div className="icon">
             <img src={`http://openweathermap.org/img/w/${details.weather.weather.weather[0].icon}.png`} alt="weather icon" />
           </div>
-          <table>
+          <table className="details-table">
             <tbody>
               <tr>
-                <td>Descreption</td>
-                <td>{details.weather.weather.weather[0].description}</td>
+                <td>
+                  The weather Today is :
+                  {' '}
+                  {' '}
+                  <span>
+                    {details.weather.weather.weather[0].description}
+                  </span>
+                </td>
               </tr>
               <tr>
-                <td>temperature:</td>
-                <td>{details.weather.weather.main.temp}</td>
+                <td>
+                  The temperature is :
+                  {' '}
+                  {' '}
+                  {Math.round(details.weather.weather.main.temp - 273.15)}
+                  {' '}
+                  °C
+                </td>
               </tr>
               <tr>
-                <td>Tempreature Min</td>
-                <td>{details.weather.weather.main.temp_min}</td>
+                <td>
+                  The Minimum temperature is :
+                  {' '}
+                  {' '}
+                  {Math.round(details.weather.weather.main.temp_min - 273.15)}
+                  {' '}
+                  °C
+                </td>
               </tr>
               <tr>
-                <td>Tempreature Max</td>
-                <td>{details.weather.weather.main.temp_max}</td>
+                <td>
+                  The Maximum temperature is :
+                  {' '}
+                  {' '}
+                  {Math.round(details.weather.weather.main.temp_max - 273.15)}
+                  {' '}
+                  °C
+                </td>
               </tr>
               <tr>
-                <td>feels_like:</td>
-                <td>{details.weather.weather.main.feels_like}</td>
+                <td>
+                  Feels like:
+                  {' '}
+                  {' '}
+                  {Math.round(details.weather.weather.main.feels_like - 273.15)}
+                  {' '}
+                  °C
+                </td>
               </tr>
               <tr>
-                <td>wind:</td>
-                <td>{details.weather.weather.wind.speed}</td>
+                <td>
+                  The Wind speed is :
+                  {' '}
+                  {' '}
+                  {details.weather.weather.wind.speed}
+                  {' '}
+                  m/s
+                </td>
               </tr>
               <tr>
-                <td>humidity:</td>
-                <td>{details.weather.weather.main.humidity}</td>
+                <td>
+                  The Humidity is :
+                  {' '}
+                  {' '}
+                  {details.weather.weather.main.humidity}
+                  {' '}
+                  %
+                </td>
               </tr>
               <tr>
-                <td>pressure:</td>
-                <td>{details.weather.weather.main.pressure}</td>
+                <td>
+                  The Pressure is :
+                  {' '}
+                  {' '}
+                  {details.weather.weather.main.pressure}
+                  {' '}
+                  hPa
+                </td>
               </tr>
             </tbody>
           </table>
