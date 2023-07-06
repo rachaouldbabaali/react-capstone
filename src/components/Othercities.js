@@ -4,6 +4,7 @@ import {
   Button, Card, Col, Container, Row,
 } from 'react-bootstrap';
 import { fetchWeather, setCity } from '../redux/weatherSlice';
+import '../styles/OtherCities.css';
 
 const cities = [
   { name: 'New York', countryCode: 'us' },
@@ -30,31 +31,33 @@ const Weather = () => {
     dispatch(setCity(city));
     dispatch(fetchWeather(city));
     localStorage.setItem('selectedCity', JSON.stringify(city));
-    window.scrollTo(0, 0);
+    window.scrollTo(200, 200);
   };
 
   return (
     <div>
       <Container>
-        <Row>
-          {cities.map((city, index) => (
-            // eslint-disable-next-line react/no-array-index-key
-            <Col md={3} key={index}>
-              <Card onClick={() => handleCityClick(city)}>
-                <Card.Body>
-                  <Card.Title>{city.name}</Card.Title>
-                  <Card.Text>{}</Card.Text>
-                  <Button
-                    variant="primary"
-                    onClick={() => handleCityClick(city)}
-                  >
-                    Details here
-                  </Button>
-                </Card.Body>
-              </Card>
-            </Col>
-          ))}
-        </Row>
+        {cities.map((city) => (
+          <Card
+            key={city.name}
+            onClick={() => handleCityClick(city)}
+            className="city-card"
+            style={{ backgroundImage: "url('../data/maps/ae.png')" }}
+          >
+            <Card.Body>
+              <Card.Title>{city.name}</Card.Title>
+              <Card.Text>{}</Card.Text>
+              <Button
+                variant="primary"
+                onClick={() => handleCityClick(city)}
+              >
+                Details here
+              </Button>
+            </Card.Body>
+          </Card>
+
+        ))}
+
         {selectedCity && (
           <Row>
             <Col md={12}>

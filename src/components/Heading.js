@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Autosuggest from 'react-autosuggest';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { fetchWeather } from '../redux/weatherSlice';
-import City from './City';
 import cities from '../data/cities.json';
 import Navbar from './Navbar';
 import '../styles/Heading.css';
+import City from './City';
 
 const Heading = () => {
   const [value, setValue] = useState('');
   const [suggestions, setSuggestions] = useState([]);
   const dispatch = useDispatch();
   const {
-    temperature, error,
+    error, temperature,
   } = useSelector((state) => state.weather);
 
   const getSuggestions = (value) => {
@@ -22,7 +24,7 @@ const Heading = () => {
       .name.toLowerCase().slice(0, inputLength) === inputValue);
   };
 
-  const getSuggestionValue = (suggestion) => `${suggestion.name},${suggestion.countryCode}`;
+  const getSuggestionValue = (suggestion) => `${suggestion.name}`;
 
   const renderSuggestion = (suggestion) => <div>{suggestion.name}</div>;
 
@@ -55,12 +57,13 @@ const Heading = () => {
   useEffect(() => {
     const storedCity = localStorage.getItem('selectedCity');
     const initialCity = storedCity ? JSON.parse(storedCity) : cities[0];
-    setValue(`${initialCity.name},${initialCity.countryCode}`);
+    setValue(`${initialCity.name}`);
     dispatch(fetchWeather(initialCity));
   }, [dispatch]);
 
   const inputProps = {
     placeholder: 'Search for a city...',
+    before: <FontAwesomeIcon icon={faSearch} />,
     value,
     onChange,
   };
@@ -69,9 +72,10 @@ const Heading = () => {
     <>
       <Navbar />
       <div className="heading">
-        <h1>Weather App</h1>
-        <form onSubmit={handleSubmit}>
+        <h1>Weather Today</h1>
+        <form onSubmit={handleSubmit} className="seggestionsForm">
           <Autosuggest
+            className="search"
             suggestions={suggestions}
             onSuggestionsFetchRequested={onSuggestionsFetchRequested}
             onSuggestionsClearRequested={onSuggestionsClearRequested}
@@ -81,11 +85,13 @@ const Heading = () => {
             inputProps={inputProps}
           />
           {error && <p>{error}</p>}
-          {temperature && (
-            <City />
-          )}
         </form>
       </div>
+      {temperature && (
+      <div className="City">
+        <City />
+      </div>
+      )}
     </>
   );
 };

@@ -4,6 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import store from '../redux/store';
+import '../styles/City.css';
 
 const WeatherDetails = () => {
   const details = store.getState();
@@ -12,31 +13,41 @@ const WeatherDetails = () => {
       className="cityweather"
       key={details.weather.weather.id}
     >
-      <p>
-        city name:
+      <h1>
+        Weather Today in
+        {' '}
         {details.weather.weather.name}
-      </p>
-      <div className="icon">
-        <img src={`http://openweathermap.org/img/w/${details.weather.weather.weather[0].icon}.png`} alt="weather icon" />
-      </div>
-      <p>
-        temperature:
-        {details.weather.weather.main.temp}
-      </p>
-      <p>
-        wind:
-        {details.weather.weather.wind.speed}
-      </p>
-      <p>
-        humidity:
-        {details.weather.weather.main.humidity}
-      </p>
-      <div>
-        <Link to="/Details">
-          <button type="button">
-            Details
-          </button>
-        </Link>
+        <br />
+        <span>
+          {details.weather.weather.weather[0].description}
+        </span>
+      </h1>
+      <div className="container2">
+        <div className="icon">
+          <img src={`http://openweathermap.org/img/w/${details.weather.weather.weather[0].icon}.png`} alt="weather icon" />
+        </div>
+        <div className="info">
+          <p>
+            temperature:
+            {'  '}
+            {Math.round(details.weather.weather.main.temp - 273.15)}
+            °C
+          </p>
+          <p>
+            humidity:
+            {'  '}
+            {details.weather.weather.main.humidity}
+            {'  '}
+            %
+          </p>
+          <div>
+            <Link to="/Details">
+              <button type="button">
+                More Details
+              </button>
+            </Link>
+          </div>
+        </div>
       </div>
 
     </div>
