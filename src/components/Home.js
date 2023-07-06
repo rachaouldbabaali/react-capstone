@@ -1,5 +1,5 @@
 import Heading from './Heading';
-import OtherCities from './OtherCities';
+import OtherCities from './Othercities';
 
 const Home = () => (
   <div>
