@@ -65,8 +65,7 @@ This project is a simple weather metrics app. The main features are:
 
 The app consists of three pages:
 
-- **The Home page displays a list of countries that can be filtered by region.**
-- **The Cities page displays a list of cities for the selected country.**
+- **The Home page displays a list of cities and the weather there.**
 - **The Details page displays the weather details for the selected city.**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
