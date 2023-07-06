@@ -1,5 +1,5 @@
 .naav {
-  background-color: #fff;
+  background-color: #ec4c8a;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
   padding: 0.5rem 1rem;
   display: flex;
@@ -10,11 +10,12 @@
   left: 0;
   width: 100%;
   justify-content: space-around;
+  z-index: 60;
 }
 .navbar-brand {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #555;
+  color: #e8e2e2;
   cursor: pointer;
 }
 
@@ -38,7 +39,7 @@
 
 .nav-link {
   font-size: 1.2rem;
-  color: #555;
+  color: #f9eff3;
   cursor: pointer;
   padding: 0 1rem;
   text-decoration: none;

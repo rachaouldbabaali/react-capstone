@@ -22,6 +22,10 @@
   align-items: center;
 }
 
+html {
+  background-color: #ec4c8a;
+}
+
 h1 {
   font-family: "Montserrat", sans-serif;
   font-size: 2.5rem;
