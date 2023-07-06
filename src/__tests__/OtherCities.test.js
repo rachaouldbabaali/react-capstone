@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch, Provider } from 'react-redux';
 import { render } from '@testing-library/react';
-import Weather from '../components/OtherCities';
+import Weather from '../components/Othercities';
 import store from '../redux/store';
 
 jest.mock('react-redux', () => ({
