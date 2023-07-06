@@ -72,7 +72,7 @@ The app consists of three pages:
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-[N/A]
+[Live Demo](https://rainbow-pastelito-5e3788.netlify.app/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
