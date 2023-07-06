@@ -8,9 +8,9 @@
   height: 100%;
   background-color: #df2d71;
   background-image: url("../images/worldmap.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 0.5rem;
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
 }
