@@ -1,0 +1,174 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Weather component renders correctly 1`] = `
+<div>
+  <div
+    class="other"
+  >
+    <div
+      class="container"
+    >
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            New York
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="us.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            London
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="gb.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            Paris
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="fr.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            Tokyo
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="jp.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            Dubai
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="ae.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            Sydney
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="au.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            Sao Paulo
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="br.png"
+            />
+          </div>
+        </div>
+      </div>
+      <div
+        class="city-card card"
+      >
+        <div
+          class="card-body"
+        >
+          <div
+            class="card-title h5"
+          >
+            New Delhi
+          </div>
+          <div
+            class="city-map"
+          >
+            <img
+              src="in.png"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

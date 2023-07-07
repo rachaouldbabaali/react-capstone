@@ -1,0 +1,51 @@
+.other {
+  background: #fd5092;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  grid-template-rows: repeat(2, 2fr);
+  grid-gap: 10px;
+}
+
+.city-card {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #0b0b0b;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  background: #fd5092;
+}
+
+.city-card:nth-child(4n-5) {
+  background: #df2d71;
+}
+
+.city-card:nth-child(4n-2) {
+  background: #df2d71;
+}
+
+.city-map img {
+  width: 100px;
+  height: 100px;
+}
+
+.card-title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 0 5px #080808;
+  text-align: center;
+  white-space: nowrap;
+  position: relative;
+  top: 50px;
+  margin: auto;
+  align-self: center;
+}
